@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>Latest</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <style>
+      #dianzan {
+          width: 55px;
+          height: 22px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin: 0 10px;
+          border-radius: 6px;
+          user-select: none;
+          cursor: pointer;
+      }
+      
+      #dianzan img{
+          width: 30px;
+          height: 30px;
+      }
+   
+      #dianzan #num {
+          line-height: 30px;
+          margin-right: 3px;
+      }   
+    </style>
+    <link rel="stylesheet" href="/static/css/wx_reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_zerogrid.css" />
+    <link rel="stylesheet" href="/static/css/wx_responsive.css" />
+    <script type="text/javascript" src="/static/js/wx_jquery-1.6.js"></script>
+    <script type="text/javascript" src="/static/js/wx_cufon-yui.js"></script>
+    <script type="text/javascript" src="/static/js/wx_cufon-replace.js"></script>
+    <script type="text/javascript" src="/static/js/wx_Swis721_Cn_BT_400.font.js"></script>
+    <script type="text/javascript" src="/static/js/wx_Swis721_Cn_BT_700.font.js"></script>
+    <script type="text/javascript" src="/static/js/wx_tabs.js"></script>
+    <script src="/static/js/wx_css3-mediaqueries.js"></script>
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(function () {            
+            $(".like").click(function () {
+                $(this).toggleClass('cs');                
+            })
+        })
+    </script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5.js"></script>
+      <style type="text/css">
+        .bg {
+          behavior: url(js/PIE.htc);
+        }
+      </style>
+    <![endif]-->
+    <!--[if lt IE 7]>
+      <div style="clear: both; text-align: center; position: relative">
+        <a
+          href="http//www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"
+          ><img
+            src="http//www.theie6countdown.com/images/upgrade.jpg"
+            border="0"
+            alt=""
+        /></a>
+      </div>
+    <![endif]-->
+        
+
+
+      {%load windownum%}
+      {%load restaurant%}
+      {%load spiciness%}
+    <body id="page2" style="background:rgb(227, 227, 227);">
+        <div class="body1">
+          <div class="body2">
+            <div class="body5">
+              <div class="main zerogrid">
+                <!-- header -->
+                <header>
+                  <div class="wrapper row">
+                    <h1>
+                        <a href="/index" id="logo"><img src="/static/images/logo.png"/></a>
+                    </h1>
+                    <nav>
+                        <ul id="menu">
+                          {%if request.session.username%}
+                          <li id="nav2">
+                            <a href="/index/latest"> 最新 </a>
+                          </li>
+                          <li id="nav3">
+                            <a href="/index/top"> 排行</a>
+                          </li>
+                          <li id="nav7">
+                            <a href="/index/search"> 搜索</a>
+                          </li>
+                          <li id="nav4">
+                            <a href="/index/sift"> 筛选 </a>
+                          </li>
+                          <li id="nav5">
+                            <a href = "/index/remark"> 点评</a>
+                          </li>
+                          <li id="nav6">
+                            <a href="/user/info"> 用户</a>
+                          </li>
+                        {%else %}
+                          {%if request.COOKIES.username%}
+                          <li id="nav2">
+                            <a href="/index/latest"> 最新 </a>
+                          </li>
+                          <li id="nav3">
+                            <a href="/index/top"> 排行</a>
+                          </li>
+                          <li id="nav7">
+                            <a href="/index/search"> 搜索</a>
+                          </li>
+                          <li id="nav4">
+                            <a href="/index/sift"> 筛选 </a>
+                          </li>
+                          <li id="nav5">
+                            <a href = "/index/remark"> 点评</a>
+                          </li>
+                          <li id="nav6">
+                            <a href="/user/info"> 用户</a>
+                          </li>
+                          {%else%}
+                          <li id="nav2">
+                            <a href="/user/login"> 登陆 </a>
+                          </li>
+                          <li id="nav3">
+                            <a href="/user/reg"> 注册</a>
+                          </li>
+                          {%endif%}
+                        {%endif%}
+                        </ul>
+                      </nav>
+                  </div>
+                </header>
+                <!-- header end-->
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="body3" style="width:90%; position: relative; top: 10%; bottom: 10%; left: 0; right: 0; margin: auto;background: white;" >
+            <div class="main zerogrid">
+              <!-- content -->
+              <article id="content">
+                <div class="wrapper tabs">
+                  <div>
+                    {% for comment in page_obj %}
+                    <div class="wrapper pad_bot2">
+                      <div class="results-message">
+                      </div>
+                      <div class="flex-row justify-content-flex-start">
+                        <div class="image-container">
+                            <img src="/static/images/{{comment.food.foodID}}.jpg"
+                            width="200px" height="200px"  >
+                        </div>
+                      </div>
+                      <p class="pad_bot1">
+                        <strong>食堂名称</strong>:{{comment.food.foodID|restaurant}}&nbsp;&nbsp;&nbsp;
+                        <strong>窗口号</strong>:{{comment.food.foodID|windownum }}&nbsp;&nbsp;&nbsp;
+                        <strong>餐品名称</strong>:<a href="/food/{{comment.food.foodID}}">{{comment.food.name}}</a><br/>
+                        <strong >辣度</strong>:{{comment.food.spiciness|spiciness}}&nbsp;&nbsp;&nbsp;
+                        <strong>价格</strong>:{{comment.food.price}}&nbsp;&nbsp;&nbsp;
+                        <strong>评分</strong>:{{comment.food.stars}}<br />
+                        <strong>点评:</strong>
+                        {{comment.content}}<br />
+                        <strong>{{comment.created_time}} </strong>
+
+                        <div id="dianzan{{forloop.counter}}">
+                          <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2021Active.png" id="like-img-active{{forloop.counter}}" style="display:none" alt="">
+                          <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2021White.png" id="like-img{{forloop.counter}}" style="display:block" alt="">
+                          <span id="num{{forloop.counter}}" style="color: rgb(153, 154, 170);">{{comment.likes}}</span>
+                      </div>
+                        <br />
+                        <br />
+                        
+                      </p>
+                    </div>
+               <script>
+                  var forloop{{forloop.counter}} = {{forloop.counter}}
+                    var zan{{forloop.counter}} = document.getElementById('dianzan'+forloop{{forloop.counter}} );
+                  var num{{forloop.counter}}  = document.getElementById('num'+forloop{{forloop.counter}} );
+                  var flag{{forloop.counter}}  = 0;
+                  zan{{forloop.counter}} .onclick = function() {
+                  var xmlhttp;
+              
+                  if (window.XMLHttpRequest)
+                      {
+                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                     xmlhttp=new XMLHttpRequest();
+                    }
+                    else
+                      {
+                      // IE6, IE5 浏览器执行代码
+                      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+
+                      var zan{{forloop.counter}} = document.getElementById('dianzan'+forloop{{forloop.counter}} );
+                      var num = document.getElementById('num'+forloop{{forloop.counter}} );
+              
+
+                      if (flag{{forloop.counter}} ==0) {
+                      num{{forloop.counter}}.innerHTML++;
+                    var likenum = num{{forloop.counter}}.innerHTML
+                    var url = "/comment/like/"+{{comment.id}}+"?likenum=" + likenum
+                    xmlhttp.open("GET",url ,true);
+                    xmlhttp.send();
+                    document.getElementById("like-img"+forloop{{forloop.counter}} ).style.display="none";
+                    document.getElementById("like-img-active"+forloop{{forloop.counter}} ).style.display="block";
+                    document.getElementById("num"+forloop{{forloop.counter}} ).style.color="rgb(252, 85, 49)";
+                    flag{{forloop.counter}} ++;
+                } else if (flag{{forloop.counter}} ==1) {
+                    num{{forloop.counter}} .innerHTML--;
+                    var likenum = num{{forloop.counter}}.innerHTML
+                    var url = "/comment/like/"+{{comment.id}}+"?likenum=" + likenum
+                    xmlhttp.open("GET",url,true);
+                    xmlhttp.send();
+                    document.getElementById("like-img"+forloop{{forloop.counter}} ).style.display="block";
+                    document.getElementById("like-img-active"+forloop{{forloop.counter}} ).style.display="none";
+                    document.getElementById("num"+forloop{{forloop.counter}} ).style.color="rgb(153, 154, 170)";
+                    flag{{forloop.counter}} --;
+                }
+                
+                }
+                
+             
+             
+              </script>
+                    {% endfor %}
+                  </div>
+
+
+                   {%if page_obj.has_previous%}
+                    <a class="button" style="background-color: rgb(11, 169, 11); width: 50px;height: 25px;" herf=
+                    "?page={{ page_obj.previous_page_number}}"><</a>
+                    {%else%}
+                    <a class="button" style="background-color: rgb(11, 169, 11); width: 50px;height: 25px;" herf=
+                    "#"><</a>
+                    {%endif%}
+                    
+                    
+                    
+                        <a class="button" style="background-color: rgb(11, 169, 11); width: 50px;height: 25px;" href="#">
+                            {{page_number}}
+                        </a>
+                    
+                    
+                    
+                        {%if page_obj.has_next%}
+                        <a class="button" style="background-color: rgb(11, 169, 11); width: 50px;height: 25px;" herf=
+                        "?page={{ page_obj.next_page_number}}">></a>
+                            {%else%}
+                            <a class="button" style="background-color: rgb(11, 169, 11); width: 50px;height: 25px;" href="#" > 
+                                    >
+                            </a>
+                        {%endif%}  
+                        
+
+                    
+                  
+                          
+
+
+
+                  <div class=>
+                    <div>
+                        <div>
+                            {%if page_obj.has_previous%}
+                                <a href="?page={{ page_obj.previous_page_number}}" class="nav"> 
+                                    上一页
+                                </a>
+                            {%else%}
+                            
+                                上一页
+                            
+                            {%endif%}
+                            <a class="button" href="#">
+                                当前第{{page_number}}页
+                            </a>
+                            <a class="button" href="#">
+                                共{{page_obj.paginator.num_pages}}页
+                            </a>            
+                            {%if page_obj.has_next%}
+                                <a href="?page={{ page_obj.next_page_number}}" class="button"> 
+                                    下一页
+                                </a>
+                            {%else%}
+                            
+                                下一页
+                            
+                            {%endif%}            
+                        </div>
+                    </div>
+                </div>
+
+                  
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="body4">
+          <div class="main zerogrid">
+            <article id="content2">
+              <div class="wrapper row">
+                <section class="col-1-4">
+                  <div class="wrap-col">
+                    <h4>Why here?</h4>
+                    <ul class="list1">
+                      <li><a href="#">找到新的美食</a></li>
+                      <li><a href="#">和热爱美食的他们分享</a></li>
+                      <li><a href="#">得到最新的美食资讯</a></li>
+                      <li><a href="#">对美食进行点评</a></li>
+                    </ul>
+                  </div>
+                </section>
+                <section class="col-1-4">
+                  <div class="wrap-col">
+                    <h4>Address</h4>
+                    <ul class="address">
+                      <li><span>Country:</span>China</li>
+                      <li><span>City:</span>Shanghai</li>
+                      <li><span>Phone:</span>547491110</li>
+                      <li>
+                        <span>Email:</span><a href="mailto:">contact@mail.com</a>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+    
+                <section class="col-1-4">
+                  <div class="wrap-col">
+                    <h4>时事通讯</h4>
+                    <form id="newsletter" method="post">
+                      <div>
+                        <div class="wrapper">
+                          <input
+                            class="input"
+                            type="text"
+                            value="在此留下你的邮箱"
+                            onblur="if(this.value=='') this.value='Type Your Email Here'"
+                            onfocus="if(this.value =='Type Your Email Here' ) this.value=''"
+                          />
+                        </div>
+                        <a
+                          href="#"
+                          class="button"
+                          onclick="document.getElementById('newsletter').submit()"
+                          >提交</a
+                        >
+                      </div>
+                    </form>
+                  </div>
+                </section>
+              </div>
+            </article>
+            <!-- content end -->
+          </div>
+        </div>
+        <div class="main zerogrid">
+          <!-- footer -->
+          <footer>@Group9 王鑫|韩志鹏|贾宇昊|施森友|贾宇昊|NURALI SARBAKYSH</footer>
+          <!-- footer end -->
+        </div>
+        <script type="text/javascript">
+          Cufon.now();
+        </script>
+        <script>
+          $(document).ready(function () {
+            tabs.init();
+          });
+        </script>
+      </body>
+    </html>
+    

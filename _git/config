@@ -1,0 +1,25 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = git@codehub.devcloud.cn-east-3.huaweicloud.com:Group900001/Web_code.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "wangxin"]
+	remote = origin
+	merge = refs/heads/wangxin
+[gui]
+	wmstate = normal
+	geometry = 1425x773+264+264 321 352
+[branch "NuraR"]
+	remote = origin
+	merge = refs/heads/NuraR
+[branch "hanzp"]
+	remote = origin
+	merge = refs/heads/hanzp

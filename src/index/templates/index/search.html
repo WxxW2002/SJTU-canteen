@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Search</title>
+  <script src="https://kit.fontawesome.com/51934344ec.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/ranking/styles/styles.css">
+
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/static/css/layout.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/static/css/zerogrid.css" />
+  <link rel="stylesheet" href="/static/css/responsive.css" />
+  <link rel="stylesheet" href="/static/css/responsiveslides.css" />
+
+  <script type="text/javascript" src="/static/js/jquery-1.6.js"></script>
+  <script type="text/javascript" src="/static/js/cufon-yui.js"></script>
+  <script type="text/javascript" src="/static/js/cufon-replace.js"></script>
+  <script type="text/javascript" src="/static/js/Swis721_Cn_BT_400.font.js"></script>
+  <script type="text/javascript" src="/static/js/Swis721_Cn_BT_700.font.js"></script>
+  <script type="text/javascript" src="/static/js/tabs.js"></script>
+  <script src="/static/js/css3-mediaqueries.js"></script>
+ 
+  {%load windownum%}
+  {%load restaurant%}
+  {%load spiciness%}
+
+      <!--my change-->
+      <link rel="stylesheet" href="/static/ranking/assets/styles/common.css" />
+      <link rel="stylesheet" href="/static/ranking/index.css" />
+  
+      <script type="module">
+        import Main from "/static/ranking/index.js";
+  
+        let main = new Main();
+  
+        main.render();
+      </script>
+  
+      <!--my change-->
+</head>
+
+<body>
+    <header>
+      <body id="page6">
+        <div class="body1">
+          <div class="body2">
+            <div class="body5">
+              <div class="main zerogrid">
+                <!-- header -->
+                <header>
+                  <div class="wrapper row">
+                    <h1>
+                      <a href="Home.html" id="logo"
+                        ><img src="/static/images/logo.png"
+                      /></a>
+                    </h1>
+                    <nav>
+                      <ul id="menu">
+                        {%if request.session.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                {%else %}
+                  {%if request.COOKIES.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                  {%else%}
+                  <li id="nav2">
+                    <a href="/user/login"> 登陆 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/user/reg"> 注册</a>
+                  </li>
+                  {%endif%}
+                {%endif%}
+                      </ul>
+                    </nav>
+                  </div>
+                   <div data-cart-icon-holder></div> 
+                </header>
+                <!-- header end-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div data-cart-icon-holder></div> 
+    </header>
+    
+    
+    <main>
+      <form  action="/index/search" method="get" id="formSearch" class="search-banner p-3rem align-items-center">
+        <h1 class="banner-title fs-3rem">Eat What</h1>
+        <div class="search-container">
+            <!-- categories
+          <select id="dropSearchCategory" class="input-search">
+            <option value="0">ALL</option>
+            <option value="1">SALADS</option>
+            <option value="2">SOUPS</option>
+            <option value="3">CHICKEN DISHES</option>
+            <option value="4">BEEF DISHES</option>
+            <option value="5">SEAFOOD DISHES</option>
+            <option value="6">VEGETARIAN</option>
+            <option value="7">SNACKS</option>
+            <option value="8">ON THE SIDE</option>
+          </select>
+        -->
+          <input type="text" name="searchs"   class="input-search" placeholder="今天想吃什么？">
+       <!--
+         <a href="index/search">
+        <span class="btn-icon"><i class="fas fa-search"></i></span><span class="btn-palered2">搜索</span>
+        <a>
+        -->            
+          <input type="submit" value="搜索" style="background-color:rgb(188,21,21);width:70px;font-size:20px">
+      </div>
+      </form>
+  
+       <!-- categories
+      <div class="results-container">
+        <aside class="results-filters pb-3rem pl-3rem pr-3rem pt-1rem p-sm-1rem">
+          <section class="filter-box mb-1rem">
+            <h4 class="filters__label3">Category</h4>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="nuts-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+                <label for="nuts-checkbox">
+                  <span class="filters__label2">All</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Salads</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Soups</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Chicken dishes</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Beef dishes</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Seafood dishes</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Vegetable dishes</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">Snacks</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+
+                <label for="vegeterian-checkbox">
+                  <span class="filters__label2">On the side</span>
+                </label>
+              </div>
+            </div>
+            <div class="filters__group">
+              <div class="filters__checkbox">
+                <input
+                  class="styled-checkbox"
+                  id="vegeterian-checkbox"
+                  type="checkbox"
+                  value="1"
+                />
+          </section>
+        </aside>
+      -->
+      <h3 align="center">
+        共有{{res_num}} 条结果
+      </h3>       
+      <section class="results-list">
+
+          <div class="results-message">
+          </div>
+          {% for food in page_obj %}
+          <div class="result-box">
+            <div class="flex-row justify-content-center">                      
+              <div class="image-container">
+              <a href="/food/{{food.foodID}}">
+                  <img src="/static/images/{{food.foodID}}.jpg"
+                   width="500px" height="200px"  >
+              <a>  
+              </div>
+             </div>
+
+
+             <div class="product-detail flex-column">
+              <div class="wrapper pad_bot2">
+                <p class="pad_bot1">
+                  <strong>食堂名称</strong>:{{food.foodID|restaurant}}<br />
+                  <strong>窗口号</strong>:{{food.foodID|windownum }}<br />
+                  <strong>餐品名称</strong>:<a href="/food/{{food.foodID}}">{{food.name}}</a><br/>
+                  <strong >辣度</strong>:{{food.spiciness|spiciness}}<br>
+                  <strong>价格</strong>:{{food.price}}<br />
+                  <strong>评分</strong>:{{food.stars}}<br />
+                 
+<!--启用标签，将数字转化为文字!-->
+                  <br />
+                  <br />
+                
+                </p>
+            
+              </div>
+            </div>
+            
+          </div>
+          </div>
+        </section>
+      </div>
+      <div class="container" data-products-grid-holder></div>
+      {% endfor %}
+    </main>
+
+    <div style="padding:10px 0 10px 0;">
+      <div>
+          <div>
+              {%if page_obj.has_previous%}
+                  <a href="?searchs={{search}}&page={{ page_obj.previous_page_number}}" class="item"> 
+                      上一页
+                  </a>
+              {%else%}
+              
+                  上一页
+              
+              {%endif%}
+              <a class="item" href="#">
+                  当前第{{page_number}}页
+              </a>
+              <a class="item" href="#">
+                  共{{page_obj.paginator.num_pages}}页
+              </a>            
+              {%if page_obj.has_next%}
+                  <a href="?searchs={{search}}&page={{ page_obj.next_page_number}}" class="item"> 
+                      下一页
+                  </a>
+              {%else%}
+              
+                  下一页
+              
+              {%endif%}            
+          </div>
+      </div>
+    </div>    
+ 
+ 
+ 
+    <div class="body4">
+      <div class="main zerogrid">
+        <article id="content2">
+          <div class="wrapper row">
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Why here?</h4>
+                <ul class="list1">
+                  <li><a href="#">找到新的美食</a></li>
+                  <li><a href="#">和热爱美食的他们分享</a></li>
+                  <li><a href="#">得到最新的美食资讯</a></li>
+                  <li><a href="#">对美食进行点评</a></li>
+                </ul>
+              </div>
+            </section>
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Address</h4>
+                <ul class="address">
+                  <li><span>Country:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;China</li>
+                  <li><span>City:</span>Shanghai</li>
+                  <li><span>Phone:</span>547491110</li>
+                  <li>
+                    <span>Email:</span><a href="mailto:">contact@mail.com</a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>时事通讯</h4>
+                <form id="newsletter" method="post">
+                  <div>
+                    <div class="wrapper">
+                      <input
+                        class="input"
+                        type="text"
+                        value="在此留下你的邮箱"
+                        onblur="if(this.value=='') this.value='Type Your Email Here'"
+                        onfocus="if(this.value =='Type Your Email Here' ) this.value=''"
+                      />
+                    </div>
+                    <a
+                      href="#"
+                      style="float: left;"
+                      onclick="document.getElementById('newsletter').submit()"
+                      >提交</a
+                    >
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </article>
+        <!-- content end -->
+      </div>
+    </div>
+    <div class="main zerogrid">
+      <!-- footer -->
+      <footer>@Group9 王鑫|韩志鹏|贾宇昊|施森友|贾宇昊|NURALI SARBAKYSH</footer>
+      <!-- footer end -->
+    </div>
+    <script type="text/javascript">
+      Cufon.now();
+    </script>
+  </body>
+
+</html>

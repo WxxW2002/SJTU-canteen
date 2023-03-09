@@ -1,0 +1,322 @@
+[
+  {
+    "name": "拉布凯鸡肉沙拉",
+    "price": 10,
+    "category": "one",
+    "image": "laab_kai_chicken_salad.png",
+    "id": "laab-kai-chicken-salad",
+    "nuts": true,
+    "vegeterian": false,
+    "spiciness": 4
+  },
+  {
+    "name": "青木瓜沙拉",
+    "price": 9.5,
+    "category": "one",
+    "image": "som_tam_papaya_salad.png",
+    "id": "som-tam-papaya-salad",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 4
+  },
+  {
+    "name": "国王沙拉",
+    "price": 7.5,
+    "category": "one",
+    "image": "king_salad.png",
+    "id": "king-salad",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  },
+  {
+    "name": "鸡春卷",
+    "price": 6.5,
+    "category": "one",
+    "image": "chicken_loempias.png",
+    "id": "chicken-springrolls",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "炒蔬菜",
+    "price": 7.5,
+    "category": "one",
+    "image": "stir_fried_vegetables.png",
+    "id": "stir-fried-vegetables",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  },
+  {
+    "name": "椰汁鸡汤",
+    "price": 7,
+    "category": "two",
+    "image": "tom_kha.png",
+    "id": "tom-kha-kai",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 4
+  },
+  {
+    "name": "汤姆卡孔",
+    "price": 8,
+    "category": "two",
+    "image": "tom_kha.png",
+    "id": "tom-kha-koong",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 3
+  },
+  {
+    "name": "冬阴功",
+    "price": 8,
+    "category": "two",
+    "image": "tom_yam.png",
+    "id": "tom-yam-koong",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 3
+  },
+  {
+    "name": "东炎素食主义者",
+    "price": 7,
+    "category": "two",
+    "image": "tom_yam.png",
+    "id": "tom-yam-vegetarian",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 3
+  },
+  {
+    "name": "汤姆卡素食主义者",
+    "price": 7,
+    "category": "two",
+    "image": "tom_kha.png",
+    "id": "tom-kha-vegetarian",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 2
+  },
+  {
+    "name": "酸甜鸡",
+    "price": 14,
+    "category": "three",
+    "image": "sweet_n_sour.png",
+    "id": "sweet-n-sour-chicken",
+    "nuts": true,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "鸡腰果",
+    "price": 14,
+    "category": "three",
+    "image": "chicken_cashew.png",
+    "id": "chicken-cashew",
+    "nuts": true,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "启见",
+    "price": 14,
+    "category": "three",
+    "image": "kai_see_ew.png",
+    "id": "kai-see-ew",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "牛肉马萨曼",
+    "price": 14.5,
+    "category": "four",
+    "image": "beef_massaman.png",
+    "id": "beef-massaman",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "海鲜朱芝",
+    "price": 16,
+    "category": "five",
+    "image": "chu_chee.png",
+    "id": "seafood-chu-chee",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "槟城虾",
+    "price": 16,
+    "category": "five",
+    "image": "red_curry.png",
+    "id": "penang-shrimp",
+    "nuts": true,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "豆腐腰果",
+    "price": 12.5,
+    "category": "six",
+    "image": "tofu_cashew.png",
+    "id": "tofu-cashew",
+    "nuts": true,
+    "vegeterian": true,
+    "spiciness": 2
+  },
+  {
+    "name": "红咖喱蔬菜",
+    "price": 12.5,
+    "category": "six",
+    "image": "red_curry_vega.png",
+    "id": "red-curry-veggies",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 2
+  },
+  {
+    "name": "克拉波豆腐",
+    "price": 12.5,
+    "category": "six",
+    "image": "krapau_vega.png",
+    "id": "krapau-tofu",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 2
+  },
+  {
+    "name": "虾片",
+    "price": 2.5,
+    "category": "seven",
+    "image": "kroepoek.png",
+    "id": "prawn-crackers",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 2
+  },
+  {
+    "name": "鱼饼",
+    "price": 6.5,
+    "category": "seven",
+    "image": "fish_cakes.png",
+    "id": "fish-cakes",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "鸡肉沙爹",
+    "price": 6.5,
+    "category": "seven",
+    "image": "sate.png",
+    "id": "chicken-satay",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "春卷虾",
+    "price": 6.5,
+    "category": "eight",
+    "image": "koong_hom_pha.png",
+    "id": "shrimp-springrolls",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "迷你素食春卷",
+    "price": 6.5,
+    "category": "eight",
+    "image": "mini_vega_springrolls.png",
+    "id": "mini-vegetarian-spring-rolls",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "鸡春卷",
+    "price": 6.5,
+    "category": "eight",
+    "image": "chicken_loempias.png",
+    "id": "chicken-springrolls",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "炒饭",
+    "price": 7.5,
+    "category": "nine",
+    "image": "fried_rice.png",
+    "id": "thai-fried-rice",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "Prik nam pla",
+    "price": 0.5,
+    "category": "nine",
+    "image": "prik_nam_pla.png",
+    "id": "prik-nam-pla",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "鲜虾饼干",
+    "price": 2.5,
+    "category": "nine",
+    "image": "kroepoek.png",
+    "id": "fresh-prawn-crackers",
+    "nuts": false,
+    "vegeterian": false,
+    "spiciness": 1
+  },
+  {
+    "name": "炒蔬菜",
+    "price": 7.5,
+    "category": "nine",
+    "image": "stir_fried_vegetables.png",
+    "id": "stir-fried-vegetables",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  },
+  {
+    "name": "白米",
+    "price": 1.5,
+    "category": "nine",
+    "image": "witte_rijst.png",
+    "id": "white-rice",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  },
+  {
+    "name": "泰式炒面",
+    "price": 7.5,
+    "category": "nine",
+    "image": "fried_noodles.png",
+    "id": "fried-noodles-thai-style",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  },
+  {
+    "name": "国王沙拉",
+    "price": 7.5,
+    "category": "nine",
+    "image": "king_salad.png",
+    "id": "king-salad",
+    "nuts": false,
+    "vegeterian": true,
+    "spiciness": 0
+  }
+]

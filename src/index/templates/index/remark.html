@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>Remark</title>
+    <meta charset="utf-8" />
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/ssy_star-main.css" media="all" type="text/css"/>
+    <script src="../static/js/jquery-1.10.2.js"></script>
+
+
+    <link rel="stylesheet" href="/static/css/ssy_reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/ssy_layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/ssy_style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/ssy_zerogrid.css" />
+    <link rel="stylesheet" href="/static/css/ssy_responsive.css" />
+    <link rel="stylesheet" href="/static/css/ssy_rating.css" />
+    <script type="text/javascript" src="/static/js/ssy_jquery-1.6.js"></script>
+    <script type="text/javascript" src="/static/js/ssy_cufon-yui.js"></script>
+    <script type="text/javascript" src="/static/js/ssy_cufon-replace.js"></script>
+    <script type="text/javascript" src="/static/js/ssy_Swis721_Cn_BT_400.font.js"></script>
+    <script type="text/javascript" src="/static/js/ssy_Swis721_Cn_BT_700.font.js"></script>
+    <script type="text/javascript" src="/static/js/ssy_tabs.js"></script>
+    <script src="/static/js/ssy_css3-mediaqueries.js"></script>
+
+
+  <style type="text/css">
+	select {
+    border: solid 1px #000;
+
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+    padding-right: 14px;
+
+    background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+}
+
+select::-ms-expand { display: none; }
+
+  </style>
+
+  <!-- 导航栏 -->
+  </head>
+  <body id="page5">
+    <div class="body1">
+      <div class="body2">
+        <div class="body5">
+          <div class="main zerogrid">
+            <!-- header -->
+            <header>
+              <div class="wrapper row">
+                <h1>
+                  <a href="Home.html" id="logo"
+                    ><img src="/static/images/logo.png"
+                  /></a>
+                </h1>
+                <nav>
+                <ul id="menu">
+                  {%if request.session.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                {%else %}
+                  {%if request.COOKIES.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                  {%else%}
+                  <li id="nav2">
+                    <a href="/user/login"> 登陆 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/user/reg"> 注册</a>
+                  </li>
+                  {%endif%}
+                {%endif%}
+                </ul>
+              </nav>
+              </div>
+            </header>
+            <!-- header end-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- remark -->
+    <div class="body3">
+      <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+          <div class="wrapper row">
+            <section class="col-3-4">
+              <div class="wrap-col">
+                <h2 class="under" style="font-size:40px;font-weight:bold">新的点评</h2>
+                <!-- 实时变化选择要测评的食堂/窗口/食物 -->
+                <form id="ContactForm" action="/index/remark" method="POST">
+                  <div>
+                    <div class="wrapper">
+                      <span style="font-size:16px;font-weight:bold">食堂名称:</span>
+                      <select name="canteen" id="canteen" onchange="chooseCanteen(this)" style="font-size:15px;">
+                        <option value="-1">请选择食堂</option>
+                    </select>
+                    </div>
+
+                    <div class="wrapper">
+                      <span style="font-size:16px;font-weight:bold">窗口名称:</span>
+                      <select name="window" id="window" onChange="chooseWindow(this)" style="font-size:15px;">
+                        <option value="-1">请选择窗口</option>
+                    </select>
+                    </div>
+
+
+                    <div class="wrapper">
+                      <span style="font-size:16px;font-weight:bold">餐品名称:</span>
+                      <select name="food" id="food"style="font-size:15px;">
+                        <option value="-1">请选择食品</option>
+                      </select>
+                    </div>
+
+
+
+
+                    <div class="wrapper">
+                      <span style="font-size:16px;font-weight:bold">评分:</span>
+                      <div class="container">
+
+    	<div class="panel panel-default">
+        <!-- 评分 -->
+		  <div class="panel-body">
+		  	  		  <input name="starNum" id="starNum" type="hidden"/>
+                      <div class="starability-container">
+	                       <fieldset class="starability-slot">
+		                        <input type="radio" id="rate_1_0_1_5" name="starLevel" value="5" />
+		                        <label for="rate_1_0_1_5" title="5星"></label>
+		                        <input type="radio" id="rate_1_0_1_4" name="starLevel" value="4" />
+		                        <label for="rate_1_0_1_4" title="4星"></label>
+		                        <input type="radio" id="rate_1_0_1_3" name="starLevel" value="3" />
+		                        <label for="rate_1_0_1_3" title="3星"></label>
+		                        <input type="radio" id="rate_1_0_1_2" name="starLevel" value="2" />
+		                        <label for="rate_1_0_1_2" title="2星"></label>
+		                        <input type="radio" id="rate_1_0_1_1" name="starLevel" value="1" />
+		                        <label for="rate_1_0_1_1" title="1星"></label>
+	                       </fieldset>
+                      </div>
+                      <span style="font-size: 1.2rem;line-height: 1rem;padding: 0.4rem;font-style: oblique;" id="starStr"></span>
+		  </div>
+		</div>
+
+
+                   </div></div>
+
+
+
+
+                    <div class="textarea_box">
+                      <span style="font-size:16px;font-weight:bold">点评:</span>
+                      <textarea name="textarea" cols="1" rows="1"></textarea>
+                    </div>
+<input type="submit" value="提交">
+                  </div>
+                </form>
+              </div>
+            </section>
+            <section class="col-1-4"></section>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="body4">
+      <div class="main zerogrid">
+        <article id="content2">
+          <div class="wrapper row">
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Why here?</h4>
+                <ul class="list1">
+                  <li><a href="#">找到新的美食</a></li>
+                  <li><a href="#">和热爱美食的他们分享</a></li>
+                  <li><a href="#">得到最新的美食资讯</a></li>
+                  <li><a href="#">对美食进行点评</a></li>
+                </ul>
+              </div>
+            </section>
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Address</h4>
+                <ul class="address">
+                  <li><span>Country:</span>China</li>
+                  <li><span>City:</span>Shanghai</li>
+                  <li><span>Phone:</span>547491110</li>
+                  <li>
+                    <span>Email:</span><a href="mailto:">contactus@mail.com</a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>时事通讯</h4>
+                <form id="newsletter" method="post">
+                  <div>
+                    <div class="wrapper">
+                      <input
+                        class="input"
+                        type="text"
+                        value="在此留下你的邮箱"
+                        onblur="if(this.value=='') this.value='Type Your Email Here'"
+                        onfocus="if(this.value =='Type Your Email Here' ) this.value=''"
+                      />
+                    </div>
+                    <a
+                      href="#"
+                      class="button"
+                      onclick="document.getElementById('newsletter').submit()"
+                      >提交</a
+                    >
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </article>
+        <!-- content end -->
+      </div>
+    </div>
+    <div class="main zerogrid">
+      <!-- footer -->
+      <footer>@Group9 王鑫|韩志鹏|贾宇昊|施森友|贾宇昊|NURALI SARBAKYSH</footer>
+      <!-- footer end -->
+    </div>
+    <script type="text/javascript">
+      Cufon.now();
+    </script>
+  </body>
+
+
+  <script>
+
+
+	$('[name="starLevel"]').bind("click",function(){
+		console.log($(this)[0].value)
+		$("#starNum").val($(this)[0].value)
+		var starNum = $(this)[0].value;
+		if(starNum == 1) $("#starStr").text("差");
+		if(starNum == 2) $("#starStr").text("一般");
+		if(starNum == 3) $("#starStr").text("良");
+		if(starNum == 4) $("#starStr").text("优");
+		if(starNum == 5) $("#starStr").text("满意");
+	})
+
+
+
+</script>
+
+
+
+<style>
+	.page-header{
+		padding-bottom: 1px;
+    	margin: 18px 0 20px;
+	}
+	.submit_btn{
+		width: 100%;
+	}
+	.textarea.form-control{
+		height: 28rem;
+	}
+	h3{
+		font-size: 22px;
+	}
+
+	h2{
+		font-size: 19px;
+	}
+</style>
+
+<script>
+  var canteenList = [
+      {name:'第一餐饮大楼', windowList:[
+      {name:'淮扬餐饮', foodList:['盒饭']},
+      {name:'中式点心', foodList:['饺子','干锅鸡']},
+      {name:'窗口3', foodList:['热干面','港式烧腊饭']}
+      ]},
+
+
+
+      {name:'第二餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      {name:'窗口2', foodList:['香菇滑鸡','水煮肉片']},
+      {name:'窗口3', foodList:['盆盆虾','烤鸡']} ,
+      {name:'新疆餐厅', foodList:['羊肉抓饭']},
+      {name:'教工餐厅', foodList:['酸辣锅']}
+
+      ]},
+
+      {name:'第三餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      {name:'窗口2', foodList:['黄焖鸡','酸菜鱼']}
+      ]},
+
+      {name:'第四餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      {name:'窗口2', foodList:['饺子','肠粉']},
+      {name:'窗口3', foodList:['口袋鸡柳','啤酒鸭']},
+      {name:'窗口4', foodList:['水煮牛肉','烤鱼']}
+      ]},
+
+      {name:'第五餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      ]},
+
+      {name:'第六餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      ]},
+
+      {name:'第七餐饮大楼', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      ]},
+
+
+      {name:'哈乐餐厅', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      {name:'窗口2', foodList:['饺子+酸辣汤','炒饭+鸡汤','螺蛳粉']}
+      ]},
+
+      {name:'玉兰苑', windowList:[
+      {name:'窗口1', foodList:['盒饭']},
+      {name:'窗口2', foodList:['炸酱面','水煮鱼']}
+      ]},
+  ]
+
+
+
+
+      //保存食堂
+      var canteenArray = new Array();
+      //保存窗口
+      var windowArray = new Array();
+      var windowList;
+
+      var canteenTag = document.getElementById("canteen");
+      var windowTag = document.getElementById("window");
+      var foodTag = document.getElementById("food");
+
+      for(var i=0; i<canteenList.length; i++){
+          var canteen = canteenList[i];
+          var canteenName = canteen.name;
+          canteenArray[i]=canteenName;
+          canteenTag.add(new Option(canteenName,i));
+          }
+
+
+      //选择食堂
+      function chooseCanteen(th){
+          var index = th.selectedIndex-1;
+          var canteenName = canteenArray[index];
+
+          for(var n=0; n<canteenList.length; n++){
+              var provice = canteenList[n];
+              if (provice.name == canteenName){
+                  windowList = provice.windowList;
+                  windowTag.innerHTML="";
+                  for(var c=0; c<windowList.length; c++){
+                      var window = windowList[c];
+                      var windowName = window.name;
+                      windowArray[c] = windowName;
+                      windowTag.add(new Option(windowName,c));
+                      }
+                  }
+              }
+          var windowName = windowArray[0];
+              var window1 = windowList[0];
+                  var foodList = window1.foodList;
+                  foodTag.innerHTML="";
+                  for(var a=0; a<foodList.length; a++){
+                      var food = foodList[a];
+                      foodTag.add(new Option(food,a));
+                      }
+          }
+      //选择窗口
+      function chooseWindow(tag){
+          var index2 = tag.selectedIndex;
+          var windowName = windowArray[index2];
+          for(var m=0; m<windowList.length; m++){
+              var window1 = windowList[m];
+              if (window1.name == windowName){
+                  var foodList = window1.foodList;
+                  foodTag.innerHTML="";
+                  for(var a=0; a<foodList.length; a++){
+                      var food = foodList[a];
+                      foodTag.add(new Option(food,a));
+                      }
+                  }
+              }
+          }
+  </script>
+
+</html>

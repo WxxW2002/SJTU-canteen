@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>Personal</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/css/adminlte.min.css" integrity="sha256-FQ+k0mIFfWXVTaW1arh3qKx8IXX5Bm5f6QG+0pkUjaE=" crossorigin>
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/webfonts/fa-regular-400.woff2" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin>
+    <link href="/app/style.5ca6817.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/wx_reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/css/wx_zerogrid.css" />
+    <link rel="stylesheet" href="/static/css/wx_responsive.css" />
+    <link rel="stylesheet" href="/static/css/wx_responsiveslides.css" />
+    <script type="text/javascript" src="/static/js/wx_jquery-1.6.js"></script>
+    <script type="text/javascript" src="/static/js/wx_cufon-yui.js"></script>
+    <script type="text/javascript" src="/static/js/wx_cufon-replace.js"></script>
+    <script type="text/javascript" src="/static/js/wx_Swis721_Cn_BT_400.font.js"></script>
+    <script type="text/javascript" src="/static/js/wx_Swis721_Cn_BT_700.font.js"></script>
+    <script type="text/javascript" src="/static/js/wx_jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="/static/js/wx_tms-0.3.js"></script>
+    <script type="text/javascript" src="/static/js/wx_tms_presets.js"></script>
+    <script type="text/javascript" src="/static/js/wx_jcarousellite.js"></script>
+    <script type="text/javascript" src="/static/js/wx_script.js"></script>
+    <script src="/static/js/wx_css3-mediaqueries.js"></script>
+    <script src="/static/js/wx_responsiveslides.js"></script>
+
+    
+  
+
+  
+  </head>
+  <body id="page5">
+    <div class="body1">
+      <div class="body2">
+        <div class="body5">
+          <div class="main zerogrid">
+            <!-- header -->
+            <header>
+              <div class="wrapper row">
+                <h1>
+                  <a href="/index" id="logo"
+                    ><img src="/static/images/logo.png"
+                  /></a>
+                </h1>
+                <nav>
+                <ul id="menu">
+                  {%if request.session.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                {%else %}
+                  {%if request.COOKIES.username%}
+                  <li id="nav2">
+                    <a href="/index/latest"> 最新 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/index/top"> 排行</a>
+                  </li>
+                  <li id="nav7">
+                    <a href="/index/search"> 搜索</a>
+                  </li>
+                  <li id="nav4">
+                    <a href="/index/sift"> 筛选 </a>
+                  </li>
+                  <li id="nav5">
+                    <a href = "/index/remark"> 点评</a>
+                  </li>
+                  <li id="nav6">
+                    <a href="/user/info"> 用户</a>
+                  </li>
+                  {%else%}
+                  <li id="nav2">
+                    <a href="/user/login"> 登陆 </a>
+                  </li>
+                  <li id="nav3">
+                    <a href="/user/reg"> 注册</a>
+                  </li>
+                  {%endif%}
+                {%endif%}
+                </ul>
+              </nav>
+              </div>
+            </header>
+            <!-- header end-->
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    
+    
+    <div class="body3">
+      <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+          <div class="wrapper row">
+            <section class="col-3-4">
+              <div class="wrap-col">
+                <h2 class="under" style="font-size:35px;font-weight:bold">个人资料</h2>
+                
+                <form action="/user/info"  class="card card-warning" method="post" id="change-password">
+                  
+                  <div class="card-footer">
+                    <h3 class="card-title">
+                      更改密码
+                    </h3>
+                  </div>
+                  
+                  <div class="card-body">
+                    <div class="form-group">
+            
+                      <label>原密码</label>
+                      <input type="password" class="form-control" name="oldPassword"
+                        required autocomplete="current-password">
+                      {% if control == 1 %}
+                      <p> 原密码错误 </p> 
+<!--控制密码错误 !-->                       
+                      {% endif %}
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>新密码</label>
+                      <input type="password" class="form-control" name="newPassword" required minlength="8" maxlength="32" autocomplete="new-password">
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>确认密码</label>
+                      <input type="password" class="form-control" name="confirm" required
+                        minlength="8" maxlength="32" autocomplete="new-password">
+                      {% if control == 2 %}  
+                      <p> 密码不一致 </p>  
+<!--控制密码不一致 !-->                       
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button class="button" type="submit" style="font-size:20px">
+                      修改密码
+                    </button>
+                  </div>
+                </form>
+                  
+
+                  <form action="/user/changename"   class="card card-primary" method="post" id="change-nickname">
+                  <div class="card-footer">
+                    <h3 class="card-title">
+                      昵称
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">更改昵称
+                      <input type="text" class="form-control" name="nickname" required
+                        value="{{myuser.username}}">
+                      {% if repeat == 1 %}
+                      <p> 呢称已存在 </p>
+                      {% endif %}
+<!--控制昵称重复 !--> 
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="button" type="submit" style="font-size:20px">
+                      提交
+                    </button>
+                  </div>
+                  </form>
+                  
+                  <form action="/user/logout" class="card card-warning" method="post" id="jaccout">
+                  <div class="card-footer">
+                    <h3 class="card-title">
+                      切换账号
+                    </h3>
+                  </div>
+                  <div class="card-footer">
+                    
+                    <button class="button" type="submit" style="font-size:20px;color:red" >
+                      登出
+                    </button>
+                  </div>
+                  </form>
+              </div>
+            </section>
+            <section class="col-1-4"></section>
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div class="body4">
+      <div class="main zerogrid">
+        <article id="content2">
+          <div class="wrapper row">
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Why here?</h4>
+                <ul class="list1">
+                  <li><a href="#">找到新的美食</a></li>
+                  <li><a href="#">和热爱美食的他们分享</a></li>
+                  <li><a href="#">得到最新的美食资讯</a></li>
+                  <li><a href="#">对美食进行点评</a></li>
+                </ul>
+              </div>
+            </section>
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>Address</h4>
+                <ul class="address">
+                  <li><span>Country:</span>China</li>
+                  <li><span>City:</span>Shanghai</li>
+                  <li><span>Phone:</span>547491110</li>
+                  <li>
+                    <span>Email:</span><a href="mailto:">contactus@mail.com</a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="col-1-4">
+              <div class="wrap-col">
+                <h4>时事通讯</h4>
+                <form id="newsletter" method="post">
+                  <div>
+                    <div class="wrapper">
+                      <input
+                        class="input"
+                        type="text"
+                        value="在此留下你的邮箱"
+                        onblur="if(this.value=='') this.value='Type Your Email Here'"
+                        onfocus="if(this.value =='Type Your Email Here' ) this.value=''"
+                      />
+                    </div>
+                    <a
+                      href="#"
+                      class="button"
+                      onclick="document.getElementById('newsletter').submit()"
+                      >提交</a
+                    >
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </article>
+        <!-- content end -->
+      </div>
+    </div>
+    <div class="main zerogrid">
+      <!-- footer -->
+      <footer>@Group9 王鑫|韩志鹏|贾宇昊|施森友|贾宇昊|NURALI SARBAKYSH</footer>
+      <!-- footer end -->
+    </div>
+    <script type="text/javascript">
+      Cufon.now();
+    </script>
+  </body>
+</html>
